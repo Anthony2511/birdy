@@ -1,0 +1,53 @@
+.compet-home
+  padding s(50,16) 0
+  &__container
+    display flex
+    flex-direction row
+    justify-content space-between
+    font-family 'opensans'
+    width 100%
+    color $cDarkBlue
+  &__bloc-left
+    padding s(30,16)
+    width 49%
+    background-color $cWhite
+    border-radius 10px
+  &__bloc-right
+    width 49%
+  &__bloc
+    background-color $cWhite
+    padding s(30,16)
+    border-radius 10px
+    margin-bottom s(20,16)
+  &__left-flex
+    display flex
+    flex-direction row
+  &__left-date
+    font-size s(50,16)
+    font-weight: 700
+    background-color $cOrange
+    padding s(20,50) s(30,50)
+    color $cWhite
+    font-family 'opensans'
+    border-radius 10px
+    text-align center
+    margin 0 s(10,50) s(20,50) 0
+    & span
+      text-transform: uppercase
+      display block
+      font-size s(25,50)
+  &__left-title
+    font-family 'montserrat'
+    font-size s(25,16)
+    font-weight: 700
+    margin-bottom s(20,25)
+  &__left-location
+    &:before
+      icon('location')
+      color $cDarkOrange
+      margin-right s(10,16)
+  &__left-text
+    line-height 1.6
+    margin-bottom s(20,16)
+
+

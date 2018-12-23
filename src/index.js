@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import config from './config';
+import './static/css/styles.css';
 import firebase from 'firebase';
+import Header from './components/Header'
 
 export default class App extends Component {
 
@@ -9,7 +11,7 @@ export default class App extends Component {
         users: null
     }
 
-    componentDidMount(){
+    componentDidMount() {
         firebase.initializeApp(config);
 
         const birdy = firebase.database().ref('users');
@@ -22,7 +24,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <p> Coucou</p>
+            <React.Fragment>
+                <Header/>
+                <p className="title"> Coucou</p>
+            </React.Fragment>
         )
     }
 }

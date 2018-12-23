@@ -1,0 +1,85 @@
+.button
+  display inline-flex
+  font-family 'opensans'
+
+ /*****WHITE*****/
+.button-white
+  &__left
+    background-color $cWhite
+    text-transform: uppercase
+    color $cDarkBlue
+    font-weight: 800
+    padding s(15, 16) s(40,16)
+    border-radius 10px 0 0 10px
+    letter-spacing 0.5px
+    transition .5s ease-in-out
+  &__right
+    background-color $cLightGreyTwo
+    border-radius 0 10px 10px 0
+    display flex
+    justify-content center
+    align-items center
+    padding 0 s(15,16)
+    color $cDarkBlue
+    transition .5s ease-in-out
+    &:before
+      icon('arrowRight')
+      font-size s(15,16)
+      transition .5s ease-in-out
+
+.button:hover .button-white__left
+  background-color $cLightGreyTwo
+  transition .5s ease-in-out
+
+.button:hover .button-white__right
+  background-color $cWhite
+  transition .5s ease-in-out
+
+.button:hover .button-white__right:before
+  transform translateX(5px)
+  transition .5s ease-in-out
+
+/*****BLUE*****/
+.button-blue
+  &__left
+    background-color $cBlue
+    text-transform: uppercase
+    color $cWhite
+    font-weight: 800
+    padding s(15, 16) s(40,16)
+    border-radius 10px 0 0 10px
+    letter-spacing 0.5px
+    transition .5s ease-in-out
+  &__right
+    background-color $cDarkBlue
+    border-radius 0 10px 10px 0
+    display flex
+    justify-content center
+    align-items center
+    padding 0 s(15,16)
+    color $cWhite
+    transition .5s ease-in-out
+    &:before
+      icon('arrowRight')
+      transition .5s ease-in-out
+
+.button:hover .button-blue__left
+  background-color $cDarkBlue
+  transition .5s ease-in-out
+
+.button:hover .button-blue__right
+  background-color $cBlue
+  transition .5s ease-in-out
+
+.button:hover .button-blue__right:before
+  transform translateX(5px)
+  transition .5s ease-in-out
+
+.button-simple
+  font-size s(25,16)
+  font-weight 700
+  &:after
+    icon('arrowTwo')
+    font-size s(18,25)
+    margin-left s(10,18)
+
