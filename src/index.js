@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import config from './config';
 import './static/css/styles.css';
 import firebase from 'firebase';
-import Header from './components/Header'
+import LoginForm from './components/LoginForm';
 
 export default class App extends Component {
 
@@ -24,10 +24,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                <Header/>
-                <p className="title"> Coucou</p>
-            </React.Fragment>
+            <LoginForm/>
         )
     }
 }
