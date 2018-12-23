@@ -1,8 +1,24 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import config from './config';
+import firebase from 'firebase';
 
 export default class App extends Component {
+
+    state = {
+        users: null
+    }
+
+    componentDidMount(){
+        firebase.initializeApp(config);
+
+        const birdy = firebase.database().ref('users');
+        birdy.on('value', snap => {
+            this.setState({
+                users: snap.val()
+            })
+        });
+    }
 
     render() {
         return (
