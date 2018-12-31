@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import config from './config';
 import './static/css/styles.css';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
 
-export default class App extends Component {
+class App extends Component {
 
     state = {
         users: null
@@ -29,4 +28,4 @@ export default class App extends Component {
     }
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'))
+export default App;

@@ -1,0 +1,61 @@
+@media screen and ( min-width: 320px)
+  .button
+    color red
+  .form
+    &__bloc
+      position relative
+      margin-bottom s(20,16)
+    &__input
+      border 1px solid $cLightGreyTwo
+      padding 10px 20px 10px 40px
+      border-radius 20px
+      width 100%
+      display block
+    &__input[type=submit]
+      font-size s(14,16)
+      background-color $cGreen
+      color $cWhite
+      font-family 'opensans'
+      border-radius 20px
+      padding s(10,14)
+      margin-top s(40,14)
+      position relative
+      &:after
+        icon('add')
+        position absolute
+        right 0
+        font-size 14px
+        color $cWhite
+        display block
+    &__input-username
+      &:before
+        icon('add')
+        font-size s(14,16)
+        position absolute
+        bottom 11px
+        left 20px
+        display block
+    &__input-password
+      &:before
+        visibility visible
+        icon('location')
+        font-size s(14,16)
+        position absolute
+        bottom 11px
+        left 20px
+        display block
+    &__label
+      color $cDarkBlue
+      font-size s(13,16)
+      display block
+      font-family 'opensans'
+      margin-bottom s(10,13)
+      font-weight: 600
+    &__link
+      font-family 'opensans'
+      color $cDarkBlue
+      text-align center
+      font-weight: 300
+      font-size s(12,16)
+      display block
+      margin-top s(10,12)

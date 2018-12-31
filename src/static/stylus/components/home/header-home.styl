@@ -1,6 +1,16 @@
-@media screen and ( max-width: 320px)
+@media screen and ( min-width: 320px)
   .header-home
-    background url('../img/headerBirdy.png') no-repeat top center / cover
+    background url('../img/headerBirdy1.png') no-repeat top center / cover
     background-position 50% 50%
     height 191px
     position relative
+    &__title
+      position absolute
+      text-align center
+      top 40%
+      left 0
+      right 0
+      font-family 'montserrat'
+      color $cWhite
+      font-size s(25,16)
+      font-weight: 700
