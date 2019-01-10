@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Input from './Input';
 import firebase from 'firebase';
-import {NavLink} from 'react-router-dom';
 
 
 class LoginForm extends Component {
@@ -10,18 +9,18 @@ class LoginForm extends Component {
         super(props);
         this.login = this.login.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.signup = this.signup.bind(this);
+        this.register = this.register.bind(this);
         this.state = {
             email: '',
             password: ''
         };
     }
 
-    handleChange(e) {
+    handleChange = e => {
         this.setState({[e.target.name]: e.target.value});
     }
 
-    login(e) {
+    login = e => {
         e.preventDefault();
         firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
         }).catch((error) => {
@@ -29,7 +28,7 @@ class LoginForm extends Component {
         });
     }
 
-    signup(e) {
+    register = e => {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
         }).then((u) => {
@@ -74,7 +73,7 @@ class LoginForm extends Component {
                                 className="">
                             Se connecter
                         </button>
-                        <button onClick={this.signup}
+                        <button onClick={this.register}
                                 className="form__link">
                             Pas encore inscrit ?
                         </button>
