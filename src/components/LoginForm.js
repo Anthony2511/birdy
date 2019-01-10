@@ -27,6 +27,7 @@ class LoginForm extends Component {
             console.log(error);
         });
     }
+
     render() {
         return (
             <React.Fragment>
@@ -68,5 +69,4 @@ class LoginForm extends Component {
         )
     }
 }
-
 export default LoginForm;

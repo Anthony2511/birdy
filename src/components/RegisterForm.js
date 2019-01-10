@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Input from './Input';
 import firebase from 'firebase';
+import {Link} from 'react-router-dom';
 
 
 class RegisterForm extends Component {
@@ -10,6 +11,8 @@ class RegisterForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.register = this.register.bind(this);
         this.state = {
+            first_name: '',
+            last_name: '',
             email: '',
             password: ''
         };
@@ -40,6 +43,28 @@ class RegisterForm extends Component {
                         <div className="form__bloc">
                             <i className="form__input-username"></i>
                             <Input
+                                value={this.state.first_name}
+                                onChange={this.handleChange}
+                                id="inputFirstName"
+                                name="first_name"
+                                type="text"
+                                label="Prénom"
+                                placeholder="Jean"/>
+                        </div>
+                        <div className="form__bloc">
+                            <i className="form__input-username"></i>
+                            <Input
+                                value={this.state.last_name}
+                                onChange={this.handleChange}
+                                id="inputLastName"
+                                name="last_name"
+                                type="text"
+                                label="Nom"
+                                placeholder="Dupont"/>
+                        </div>
+                        <div className="form__bloc">
+                            <i className="form__input-username"></i>
+                            <Input
                                 value={this.state.email}
                                 onChange={this.handleChange}
                                 id="inputEmail"
@@ -61,9 +86,10 @@ class RegisterForm extends Component {
                         </div>
                         <button type="submit"
                                 onClick={this.register}
-                                className="">
+                                className="form__input">
                             S'inscrire
                         </button>
+                        <Link to="/" className="form__link">Déjà un compte ?</Link>
                     </form>
                 </div>
             </React.Fragment>

@@ -23,10 +23,10 @@ class App extends Component {
 
     authListener() {
         firebase.auth().onAuthStateChanged((user) => {
-                console.log(user);
                 if (user) {
                     this.setState({user});
                     localStorage.setItem('user', user.uid);
+
                 } else {
                     this.setState({user: null});
                     localStorage.removeItem('user');
@@ -36,11 +36,21 @@ class App extends Component {
     }
 
     render() {
+        if (this.state.user === null) {
+            return (
+                <Switch>
+                    <Route path="/" exact component={LoginForm}/>
+                    <Route path="/register" component={RegisterForm}/>
+                    <Redirect to="/"/>
+                </Switch>
+            )
+        }
         return (
             <div>
-                {this.state.user ? (<Home/>) : (<LoginForm/>)}
                 <Switch>
                     <Route path="/register" component={RegisterForm}/>
+                    <Route path="/" exact component={Home}/>
+                    <Redirect to="/"/>
                 </Switch>
             </div>
         )

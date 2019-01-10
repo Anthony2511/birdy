@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
+import Header from './Header';
 
 class Home extends Component {
     constructor(props) {
@@ -14,10 +15,12 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Welcome to Home</h1>
-                <button onClick={this.logout}>Logout</button>
-            </div>
+            <React.Fragment>
+                <Header/>
+                <div>
+                    <button onClick={this.logout}>Logout</button>
+                </div>
+            </React.Fragment>
         );
 
     }
