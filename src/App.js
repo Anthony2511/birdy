@@ -3,6 +3,9 @@ import config from './config';
 import './static/css/styles.css';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Home from "./components/Home";
+import RegisterForm from "./components/RegisterForm";
 
 class App extends Component {
 
@@ -23,7 +26,16 @@ class App extends Component {
 
     render() {
         return (
-            <LoginForm/>
+            <div>
+                <LoginForm/>
+                <div className="content">
+                    <Switch>
+                        <Route path="/register" component={RegisterForm}/>
+                    </Switch>
+                </div>
+            </div>
+
+
         )
     }
 }

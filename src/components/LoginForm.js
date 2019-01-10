@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Input from './Input';
+import {NavLink} from 'react-router-dom';
 
 
 class LoginForm extends Component {
@@ -31,7 +32,7 @@ class LoginForm extends Component {
                         <Input
                             type="submit"
                             value="Se connecter"/>
-                        <a href="#" className="form__link">Pas encore inscrit ?</a>
+                        <NavLink to="/register" className="form__link">Pas encore inscrit ?</NavLink>
                     </form>
                 </div>
             </React.Fragment>
