@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import Input from './Input';
 import firebase from 'firebase';
+import {Link} from 'react-router-dom';
 
 
 class LoginForm extends Component {
@@ -9,7 +10,6 @@ class LoginForm extends Component {
         super(props);
         this.login = this.login.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.register = this.register.bind(this);
         this.state = {
             email: '',
             password: ''
@@ -27,18 +27,6 @@ class LoginForm extends Component {
             console.log(error);
         });
     }
-
-    register = e => {
-        e.preventDefault();
-        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-        }).then((u) => {
-            console.log(u)
-        })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
-
     render() {
         return (
             <React.Fragment>
@@ -70,13 +58,10 @@ class LoginForm extends Component {
                         </div>
                         <button type="submit"
                                 onClick={this.login}
-                                className="">
+                                className="form__input">
                             Se connecter
                         </button>
-                        <button onClick={this.register}
-                                className="form__link">
-                            Pas encore inscrit ?
-                        </button>
+                        <Link to="/register" className="form__link">Pas encore inscrit ?</Link>
                     </form>
                 </div>
             </React.Fragment>

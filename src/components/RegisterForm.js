@@ -1,8 +1,34 @@
 import React, {Component} from 'react';
 import Header from './Header';
+import Input from './Input';
+import firebase from 'firebase';
 
 
 class RegisterForm extends Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.register = this.register.bind(this);
+        this.state = {
+            email: '',
+            password: ''
+        };
+    }
+
+    handleChange = e => {
+        this.setState({[e.target.name]: e.target.value});
+    }
+
+    register = e => {
+        e.preventDefault();
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+        }).then((u) => {
+            console.log(u)
+        })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     render() {
         return (
@@ -10,6 +36,35 @@ class RegisterForm extends Component {
                 <Header/>
                 <div className="wrap">
                     <h3 aria-level="3" className="title">Inscription</h3>
+                    <form action="" className="form">
+                        <div className="form__bloc">
+                            <i className="form__input-username"></i>
+                            <Input
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                id="inputEmail"
+                                name="email"
+                                type="email"
+                                label="Adresse e-mail"
+                                placeholder="jeandupont@gmail.com"/>
+                        </div>
+                        <div className="form__bloc">
+                            <i className="form__input-password"></i>
+                            <Input
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                name="password"
+                                id="inputPassword"
+                                type="password"
+                                label="Mot de passe"
+                                placeholder="Entrez votre mot de passe"/>
+                        </div>
+                        <button type="submit"
+                                onClick={this.register}
+                                className="">
+                            S'inscrire
+                        </button>
+                    </form>
                 </div>
             </React.Fragment>
         )

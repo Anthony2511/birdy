@@ -3,8 +3,9 @@ import config from './config';
 import './static/css/styles.css';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
-//import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from "./components/Home";
+import RegisterForm from "./components/RegisterForm";
 
 class App extends Component {
     constructor() {
@@ -38,9 +39,10 @@ class App extends Component {
         return (
             <div>
                 {this.state.user ? (<Home/>) : (<LoginForm/>)}
+                <Switch>
+                    <Route path="/register" component={RegisterForm}/>
+                </Switch>
             </div>
-
-
         )
     }
 }
