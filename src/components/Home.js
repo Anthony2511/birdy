@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
-import Header from './Header';
+import HeaderHome from "./HeaderHome";
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.logout = this.logout.bind(this);
     }
-
 
     logout() {
         firebase.auth().signOut();
@@ -16,7 +15,7 @@ class Home extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header/>
+                <HeaderHome/>
                 <div>
                     <button onClick={this.logout}>Logout</button>
                 </div>
