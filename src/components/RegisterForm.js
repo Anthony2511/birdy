@@ -63,7 +63,7 @@ class RegisterForm extends Component {
                                 placeholder="Dupont"/>
                         </div>
                         <div className="form__bloc">
-                            <i className="form__input-username"></i>
+                            <i className="form__input-envelope"></i>
                             <Input
                                 value={this.state.email}
                                 onChange={this.handleChange}

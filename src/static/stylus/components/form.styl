@@ -22,29 +22,46 @@
       margin-top s(40,14)
       position relative
       &:after
-        icon('add')
+        icon('arrowRight')
         position absolute
         right 0
         top 35%
         right 23%
-        font-size 14px
+        font-size 12px
         color $cWhite
         display block
     &__input-username
       &:before
-        icon('add')
+        icon('user')
         font-size s(14,16)
         position absolute
-        bottom 11px
+        bottom 13px
         left 20px
+        display block
+    &__input-envelope
+      &:before
+        icon('envelope')
+        font-size s(12,16)
+        position absolute
+        bottom 13px
+        left 18px
         display block
     &__input-password
       &:before
         visibility visible
-        icon('location')
+        icon('padlock')
         font-size s(14,16)
         position absolute
-        bottom 11px
+        bottom 13px
+        left 20px
+        display block
+    &__input-birdcage
+      &:before
+        visibility visible
+        icon('birdCage')
+        font-size s(14,16)
+        position absolute
+        bottom 13px
         left 20px
         display block
     &__label
