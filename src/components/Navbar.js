@@ -3,18 +3,18 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
-        <ul>
-            <li>
-                <Link to="">Carte</Link>
+        <ul className="nav__list">
+            <li className="nav__item">
+                <Link to="" className="nav__link nav__link--carte">Carte</Link>
             </li>
-            <li>
-                <Link to="">Captures</Link>
+            <li className="nav__item">
+                <Link to="" className="nav__link nav__link--capture">Capture</Link>
             </li>
-            <li>
-                <Link to="">Encyclopédie</Link>
+            <li className="nav__item">
+                <Link to="" className="nav__link nav__link--encyclopedie">Encyclopédie</Link>
             </li>
-            <li>
-                <Link to="">Utilisateurs</Link>
+            <li className="nav__item">
+                <Link to="" className="nav__link nav__link--users">Utilisateurs</Link>
             </li>
         </ul>
     );

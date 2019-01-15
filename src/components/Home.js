@@ -17,7 +17,7 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <HeaderHome/>
-                <div>
+                <div className="wrap">
                     <button onClick={this.logout}>Logout</button>
                 </div>
                 <NavBar/>
