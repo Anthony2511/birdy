@@ -19,6 +19,7 @@ class Home extends Component {
             <React.Fragment>
                 <HeaderHome/>
                 <div className="wrap">
+                    <h3 aria-level="3" className="title">Bienvenue</h3>
                     <button onClick={this.logout} className="button__logout"><span className="hidden">Logout</span>
                     </button>
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
