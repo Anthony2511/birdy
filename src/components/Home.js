@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from 'firebase';
 import HeaderHome from "./HeaderHome";
+import NavBar from "./Navbar";
 
 class Home extends Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class Home extends Component {
                 <div>
                     <button onClick={this.logout}>Logout</button>
                 </div>
+                <NavBar/>
             </React.Fragment>
         );
 
