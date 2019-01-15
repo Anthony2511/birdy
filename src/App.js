@@ -6,6 +6,10 @@ import LoginForm from './components/LoginForm';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Home from "./components/Home";
 import RegisterForm from "./components/RegisterForm";
+import Capture from './components/Capture';
+import Encyclopedie from './components/Encyclopedie';
+import Map from './components/Map';
+import Users from './components/Users';
 
 class App extends Component {
     constructor() {
@@ -50,6 +54,10 @@ class App extends Component {
                 <Switch>
                     <Route path="/register" component={RegisterForm}/>
                     <Route path="/" exact component={Home}/>
+                    <Route path="/addCapture" component={Capture}/>
+                    <Route path="/encyclopedie" component={Encyclopedie}/>
+                    <Route path="/map" component={Map}/>
+                    <Route path="/users" component={Users}/>
                     <Redirect to="/"/>
                 </Switch>
             </div>

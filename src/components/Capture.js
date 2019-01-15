@@ -4,15 +4,7 @@ import HeaderHome from "./HeaderHome";
 import NavBar from "./Navbar";
 import {Link} from 'react-router-dom';
 
-class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.logout = this.logout.bind(this);
-    }
-
-    logout() {
-        firebase.auth().signOut();
-    }
+class Capture extends Component {
 
     render() {
         return (
@@ -22,7 +14,7 @@ class Home extends Component {
                     <button onClick={this.logout} className="button__logout"><span className="hidden">Logout</span>
                     </button>
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
-                    <Link to="/addCapture" className="button__birdcage">Ajouter une capture</Link>
+                    <p>TEST</p>
                 </div>
                 <NavBar/>
             </React.Fragment>
@@ -32,4 +24,4 @@ class Home extends Component {
 
 }
 
-export default Home;
+export default Capture;

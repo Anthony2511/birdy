@@ -1,3 +1,5 @@
+.active
+  background-color $cGreen
 .nav
   &__list
     background-color $cDarkGreen
@@ -10,11 +12,10 @@
   &__item
     color $cWhite
     font-size s(12,16)
-    padding s(10,12)
     font-family 'opensans'
-    &:hover
-      background-color $cGreen
   &__link
+    padding s(10,12)
+    display block
     &--carte
       &:before
         icon('map')
