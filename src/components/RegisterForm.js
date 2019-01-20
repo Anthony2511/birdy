@@ -26,13 +26,10 @@ class RegisterForm extends Component {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
         }).then((u) => {
-            console.log(u)
-            let user = firebase.auth().currentUser;
             this.writeUserData();
+        }).catch((error) => {
+            console.log(error);
         })
-            .catch((error) => {
-                console.log(error);
-            })
     }
 
     writeUserData() {

@@ -21,13 +21,6 @@ class AddCapture extends Component {
         },
     };
 
-    componentWillMount(){
-        let currentUserId = firebase.auth().currentUser.uid;
-        firebase.database().ref("users/" + currentUserId).on("value", snapshot => {
-            this.setState({ userData: snapshot.val()})
-            console.log(currentUserId);
-        })
-    }
     componentDidMount() {
         const bird = firebase.database().ref('single_captures');
 
@@ -40,14 +33,19 @@ class AddCapture extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const newBird = this.state.newBird;
+        const {common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age} = this.state.newBird;
         const bird = firebase.database().ref('single_captures');
-        bird.push({newBird});
+        bird.push({
+            common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age
+        });
     };
 
-    handleAdd = ({ currentTarget: input }) =>{
-        const newBird = input.value;
+    handleAdd = ({currentTarget: input}) => {
+        const newBird = {...this.state.newBird};
+        newBird[input.name] = input.value;
         this.setState({newBird});
+        console.log({newBird});
+        console.log({input});
     }
 
     render() {
@@ -79,7 +77,7 @@ class AddCapture extends Component {
                             </div>
                             <div className="form__bloc">
                                 <Input
-                                    value={this.state.newBird.bague}
+                                    value={newBird.bague}
                                     onChange={this.handleAdd}
                                     id="bague"
                                     name="bague"
@@ -89,7 +87,7 @@ class AddCapture extends Component {
                             </div>
                             <div className="form__bloc">
                                 <Input
-                                    value={this.state.newBird.reprise}
+                                    value={newBird.reprise}
                                     onChange={this.handleAdd}
                                     id="inputReprise"
                                     name="reprise"
@@ -98,7 +96,7 @@ class AddCapture extends Component {
                             </div>
                             <div className="form__bloc">
                                 <Input
-                                    value={this.state.newBird.latin_name}
+                                    value={newBird.latin_name}
                                     onChange={this.handleAdd}
                                     id="latin_name"
                                     name="latin_name"
@@ -107,7 +105,7 @@ class AddCapture extends Component {
                             </div>
                             <div className="form__bloc">
                                 <Input
-                                    value={this.state.newBird.sex}
+                                    value={newBird.sex}
                                     onChange={this.handleAdd}
                                     id="sex"
                                     name="sex"
