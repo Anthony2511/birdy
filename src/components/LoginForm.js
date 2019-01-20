@@ -3,6 +3,7 @@ import Header from './Header';
 import Input from './Input';
 import firebase from 'firebase';
 import {Link} from 'react-router-dom';
+import Joi from 'joi-browser';
 
 
 class LoginForm extends Component {

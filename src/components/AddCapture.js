@@ -5,10 +5,9 @@ import NavBar from "./Navbar";
 import Input from './Input';
 import {Link} from 'react-router-dom';
 
-class Capture extends Component {
+class AddCapture extends Component {
     state = {
         birds: null,
-        addCapture:"",
         newBird: {
             common_name: '',
             bague: '',
@@ -19,10 +18,16 @@ class Capture extends Component {
             weight: '',
             fat: '',
             age: '',
-        }
-
+        },
     };
 
+    componentWillMount(){
+        let currentUserId = firebase.auth().currentUser.uid;
+        firebase.database().ref("users/" + currentUserId).on("value", snapshot => {
+            this.setState({ userData: snapshot.val()})
+            console.log(currentUserId);
+        })
+    }
     componentDidMount() {
         const bird = firebase.database().ref('single_captures');
 
@@ -35,17 +40,23 @@ class Capture extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const addCapture = this.state.newBird;
-        const bird = firebase.database().ref('birds');
-        bird.push({addCapture});
+        const newBird = this.state.newBird;
+        const bird = firebase.database().ref('single_captures');
+        bird.push({newBird});
     };
 
     handleAdd = ({ currentTarget: input }) =>{
-        const addCapture = input.value;
-        this.setState({addCapture});
+        const newBird = input.value;
+        this.setState({newBird});
     }
 
     render() {
+
+        const sexOptions = [
+            'M',
+            'F'
+        ]
+        const {newBird} = this.state;
         return (
             <React.Fragment>
                 <HeaderHome/>
@@ -58,7 +69,7 @@ class Capture extends Component {
                         <form action="" onSubmit={this.handleSubmit}>
                             <div className="form__bloc">
                                 <Input
-                                    value={this.state.newBird.common_name}
+                                    value={newBird.common_name}
                                     onChange={this.handleAdd}
                                     id="common_name"
                                     name="common_name"
@@ -118,4 +129,4 @@ class Capture extends Component {
 
 }
 
-export default Capture;
+export default AddCapture;

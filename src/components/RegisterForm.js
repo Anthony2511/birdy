@@ -27,10 +27,22 @@ class RegisterForm extends Component {
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
         }).then((u) => {
             console.log(u)
+            let user = firebase.auth().currentUser;
+            this.writeUserData();
         })
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    writeUserData() {
+        let user = firebase.auth().currentUser;
+        firebase.database().ref('users/' + user.uid).set({
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            email: this.state.email,
+            userId: user.uid
+        });
     }
 
     render() {
@@ -43,7 +55,7 @@ class RegisterForm extends Component {
                         <div className="form__bloc">
                             <i className="form__input-username"></i>
                             <Input
-                                value={this.state.first_name}
+                                value={this.setState.first_name}
                                 onChange={this.handleChange}
                                 id="inputFirstName"
                                 name="first_name"
