@@ -6,6 +6,11 @@ import Input from './Input';
 import {Link} from 'react-router-dom';
 
 class AddCapture extends Component {
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
     state = {
         newSession: {
             started: false,
@@ -29,6 +34,10 @@ class AddCapture extends Component {
             age: '',
         },
     };
+
+    logout() {
+        firebase.auth().signOut();
+    }
 
     componentDidMount() {
         const bird = firebase.database().ref('single_captures');

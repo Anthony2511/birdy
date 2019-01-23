@@ -5,8 +5,17 @@ import NavBar from "./Navbar";
 import {Link} from 'react-router-dom';
 
 class AllUsers extends Component {
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
     state = {
         users: {}
+    }
+
+    logout() {
+        firebase.auth().signOut();
     }
 
     componentWillMount() {
@@ -24,19 +33,25 @@ class AllUsers extends Component {
         if (users !== null) {
             const vals = Object.values(users);
             return (
-                <ul>
-                    {vals.map(users =>
-                        <li key={users.email}>
-                            {users.email}
-                        </li>
-                    )}
-
-                    {vals.map(users =>
-                        <li key={users.first_name}>
-                            {users.first_name}
-                        </li>
-                    )}
-                </ul>
+                <React.Fragment>
+                    <div className="users__container">
+                        {vals.map(users =>
+                            <div key={users.uid} className="users__bloc">
+                                <div className="users__name">
+                                    <span className="users__item users__item--bold">
+                                        {users.first_name}
+                                    </span>
+                                    <span className="users__item users__item--bold">
+                                        {users.last_name}
+                                    </span>
+                                </div>
+                                <span className="users__item users__item--email">
+                                    {users.email}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+                </React.Fragment>
             )
         }
     }
@@ -46,10 +61,10 @@ class AllUsers extends Component {
             <React.Fragment>
                 <HeaderHome/>
                 <div className="wrap">
+                    <h3 aria-level="3" className="title">Liste des utilisateurs</h3>
                     <button onClick={this.logout} className="button__logout"><span className="hidden">Logout</span>
                     </button>
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
-                    <p>TEST 3</p>
                     {this.renderUser()}
                 </div>
                 <NavBar/>
