@@ -48,6 +48,9 @@ class AllUsers extends Component {
                                 <span className="users__item users__item--email">
                                     {users.email}
                                 </span>
+                                <span className="users__item users__item--id">
+                                    {users.userId}
+                                </span>
                             </div>
                         )}
                     </div>

@@ -1,24 +1,63 @@
-.users
-  &__container
-    margin-bottom 100px
-  &__bloc
-    display flex
-    flex-direction column
-    justify-content center
-    align-items center
-    flex-wrap wrap
-    background-color $cLightGrey
-    border-radius 10px
-    padding 20px
-  &__bloc + &__bloc
-    margin-top 20px
-  &__item
-    color $cDarkBlue
-    font-family 'opensans'
-    margin 0 2.5px
-    &--bold
-      font-weight:600
-    &--email
+@media screen and (max-width:320px)
+  .users
+    &__container
+      margin-bottom 100px
+    &__bloc
+      display flex
+      flex-direction column
+      justify-content center
+      align-items center
+      flex-wrap wrap
+      background-color $cLightGrey
+      border-radius 10px
+      padding 20px
+    &__bloc + &__bloc
+      margin-top 20px
+    &__item
+      color $cDarkBlue
+      font-family 'opensans'
+      margin 0 2.5px
+      &--bold
+        font-weight:600
+      &--email
+        font-size 14px
+      &--id
+        margin-top 10px
+        font-size 12px
+    &__name
+      margin-bottom 10px
+    &__bloc-capture
+      display flex
+      flex-direction row
+      flex-wrap wrap
+      width 25%
+
+  .capture
+    &__container
+      display flex
+      flex-direction row
+      flex-wrap wrap
+      justify-content center
+      align-items center
+      margin-bottom 150px
+    &__bloc
+      width 100%
+      background-color $cLightGrey
+      font-family 'opensans'
+      text-align center
+      padding 10px
+      border-radius 10px
+    &__bloc + &__bloc
+      margin-top 30px
+    &__common-name
       font-size 14px
-  &__name
-    margin-bottom 10px
+      display flex
+      flex-direction column
+      margin-bottom 10px
+    &__bague
+      font-size 14px
+      display flex
+      flex-direction column
+    &__title
+      font-weight: 600
+      margin-bottom 5px

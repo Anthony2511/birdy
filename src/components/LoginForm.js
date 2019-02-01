@@ -13,7 +13,11 @@ class LoginForm extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            errors: {
+                email: '',
+                password: ''
+            }
         };
     }
 
@@ -27,6 +31,16 @@ class LoginForm extends Component {
         }).catch((error) => {
             console.log(error);
         });
+    }
+
+    schema = {
+        username: Joi.string().alphanum().min(3).max(30).required(),
+        password: Joi.string().required()
+    }
+
+    validate = () => {
+        const result = Joi.validate(this.state, this.schema, {abortEarly: false})
+        return result
     }
 
     render() {
@@ -45,7 +59,8 @@ class LoginForm extends Component {
                                 name="email"
                                 type="email"
                                 label="Adresse e-mail"
-                                placeholder="jeandupont@gmail.com"/>
+                                placeholder="jeandupont@gmail.com"
+                                />
                         </div>
                         <div className="form__bloc">
                             <i className="form__input-password"></i>

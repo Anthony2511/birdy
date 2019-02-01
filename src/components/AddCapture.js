@@ -33,6 +33,7 @@ class AddCapture extends Component {
             fat: '',
             age: '',
         },
+        capture_sessions: {}
     };
 
     logout() {
@@ -41,12 +42,36 @@ class AddCapture extends Component {
 
     componentDidMount() {
         const bird = firebase.database().ref('single_captures');
-
         bird.on('value', snap => {
             this.setState({
                 single_captures: snap.val()
             })
         })
+        this.storePosition()
+    }
+
+    ifIsSite = () => {
+        const capture_sessions = firebase.database().ref('capture_sessions');
+
+        capture_sessions.on('value', snap => {
+            this.setState({
+                capture: snap.val()
+            })
+        })
+    }
+    storePosition = () => {
+        const newSession = {...this.state.newSession};
+
+        navigator.geolocation.getCurrentPosition(position => {
+            newSession.place.lat = this.roundToTwo(position.coords.latitude)
+            newSession.place.lng = this.roundToTwo(position.coords.longitude)
+        })
+
+        this.setState({newSession})
+    }
+
+    roundToTwo = (num) => {
+        return +(Math.round(num + "e+2") + "e-2");
     }
 
     handleSubmit = e => {
@@ -68,6 +93,7 @@ class AddCapture extends Component {
     handleStartCapture = e => {
         e.preventDefault();
         const {place, method, uid} = this.state.newSession;
+        console.log(place)
         const captureTime = Date.now();
         const session = firebase.database().ref('capture_sessions/' + captureTime);
         session.set({
@@ -123,8 +149,7 @@ class AddCapture extends Component {
                             id="common_name"
                             name="common_name"
                             type="text"
-                            label="Nom commun"
-                            placeholder="Jean Dupont"/>
+                            label="Nom commun"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -133,10 +158,9 @@ class AddCapture extends Component {
                             id="bague"
                             name="bague"
                             type="number"
-                            label="Type de bague"
-                            placeholder="785495"/>
+                            label="Type de bague"/>
                     </div>
-                    <div className="form__bloc">
+                    {/*<div className="form__bloc">
                         <Input
                             value={newBird.reprise}
                             onChange={this.handleAdd}
@@ -144,6 +168,24 @@ class AddCapture extends Component {
                             name="reprise"
                             type="boolean"
                             label="Est-ce une reprise ?"/>
+                    </div>*/}
+                    <div className="form__bloc">
+                        <Input
+                            value={newBird.age}
+                            onChange={this.handleAdd}
+                            id="age"
+                            name="age"
+                            type="number"
+                            label="&Aacute;ge"/>
+                    </div>
+                    <div className="form__bloc">
+                        <Input
+                            value={newBird.alaire}
+                            onChange={this.handleAdd}
+                            id="alaire"
+                            name="alaire"
+                            type="text"
+                            label="Longueur d'alaire"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -162,6 +204,15 @@ class AddCapture extends Component {
                             name="sex"
                             type="text"
                             label="Sexe"/>
+                    </div>
+                    <div className="form__bloc">
+                        <Input
+                            value={newBird.weight}
+                            onChange={this.handleAdd}
+                            id="weight"
+                            name="weight"
+                            type="text"
+                            label="Poids"/>
                     </div>
                     <button type="submit"
                             className="button__form">

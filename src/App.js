@@ -8,8 +8,9 @@ import Home from "./components/Home";
 import RegisterForm from "./components/RegisterForm";
 import AddCapture from './components/AddCapture';
 import Encyclopedie from './components/Encyclopedie';
-import Map from './components/Map';
+import MapCapture from './components/Map';
 import AllUsers from './components/AllUsers';
+import EncyclopedieDetail from "./components/EncyclopedieDetail";
 
 class App extends Component {
     constructor() {
@@ -56,7 +57,8 @@ class App extends Component {
                     <Route path="/" exact component={Home}/>
                     <Route path="/addCapture" component={AddCapture}/>
                     <Route path="/encyclopedie" component={Encyclopedie}/>
-                    <Route path="/map" component={Map}/>
+                    <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
+                    <Route path="/map" component={MapCapture}/>
                     <Route path="/users" component={AllUsers}/>
                     <Redirect to="/"/>
                 </Switch>
