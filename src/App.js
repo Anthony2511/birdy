@@ -11,6 +11,7 @@ import Encyclopedie from './components/Encyclopedie';
 import MapCapture from './components/Map';
 import AllUsers from './components/AllUsers';
 import EncyclopedieDetail from "./components/EncyclopedieDetail";
+import MyCaptures from "./components/MyCaptures";
 
 class App extends Component {
     constructor() {
@@ -58,6 +59,7 @@ class App extends Component {
                     <Switch location={this.props.location}>
                         <Route path="/" exact component={Home}/>
                         <Route path="/addCapture" component={AddCapture}/>
+                        <Route path="/myCaptures" component={MyCaptures}/>
                         <Route path="/encyclopedie" component={Encyclopedie}/>
                         <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
                         <Route path="/map" component={MapCapture}/>

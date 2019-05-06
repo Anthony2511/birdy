@@ -77,6 +77,7 @@ class Home extends Component {
                     <Link to="/addCapture" className="button__birdcage">Ajouter une capture</Link>
                     <div className="users__container-capture">
                         <h3 aria-level="3" className="subtitle">Liste des captures</h3>
+                        <Link to="/myCaptures" className="button__birdcage">Voir mes captures</Link>
                         {this.renderUserCapture()}
                     </div>
                 </div>
