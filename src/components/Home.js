@@ -11,8 +11,7 @@ class Home extends Component {
         this.state = {
             users: {
                 first_name: ''
-            },
-            single_captures: {}
+            }
 
         }
     }
@@ -21,50 +20,12 @@ class Home extends Component {
         firebase.database().ref("users/" + userId).on("value", snapshot => {
             this.setState({ users: snapshot.val() })
         })
-        this.getAllCaptures()
     }
 
     logout() {
         firebase.auth().signOut();
     }
 
-    getAllCaptures() {
-        const allCaptures = firebase.database().ref('single_captures');
-        allCaptures.on('value', snap => {
-            this.setState({
-                single_captures: snap.val()
-            })
-        })
-
-    }
-
-    renderUserCapture() {
-        const {single_captures} = this.state;
-        if (single_captures !== null) {
-            const vals = Object.values(single_captures);
-            return (
-                <React.Fragment>
-                    <div className="capture__container">
-                        {vals.map((single_capture,key) =>
-                            <div key={key} className="capture__bloc">
-                                <div className="capture__name">
-                                    <div className="capture__common-name">
-                                        <span className="capture__title">Nom commun</span>
-                                        <span>{single_capture.common_name}</span>
-                                    </div>
-                                    <div className="capture__bague">
-                                        <span className="capture__title">Numéro de bague</span>
-                                        <span>{single_capture.bague}</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </React.Fragment>
-            )
-        }
-    }
     render() {
         return (
             <React.Fragment>
@@ -76,9 +37,7 @@ class Home extends Component {
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
                     <Link to="/addCapture" className="button__birdcage">Ajouter une capture</Link>
                     <div className="users__container-capture">
-                        <h3 aria-level="3" className="subtitle">Liste des captures</h3>
                         <Link to="/myCaptures" className="button__birdcage">Voir mes captures</Link>
-                        {this.renderUserCapture()}
                     </div>
                 </div>
                 <NavBar/>

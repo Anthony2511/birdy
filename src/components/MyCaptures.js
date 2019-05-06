@@ -7,73 +7,61 @@ import {Link} from 'react-router-dom';
 class MyCaptures extends Component {
 
     state = {
-        birds: {}
+        single_captures: {},
+        uid: firebase.auth().currentUser.uid
     }
 
-    componentWillMount() {
-        firebase.database().ref('/birds/').once('value').then((snapshot) => {
-            let birds = [];
-            snapshot.forEach((item) => {
-                birds.push(item.val());
-            });
-            this.setState({birds});
-        });
+    componentDidMount() {
+        const userId = this.state.uid;
+        const allcaptures = {...this.state.single_captures}
+        // Get the capture sessions
+        const capture_sessions = firebase.database().ref('capture_sessions');
+        const single_captures = firebase.database().ref('single_captures');
+
+        // Retrives the single captures
+        capture_sessions.orderByChild("uid").equalTo(userId).on('child_added', (capture) => {
+            const userSessionId = capture.key;
+
+            single_captures.orderByChild("session_id").equalTo(userSessionId).on('child_added', (usercapture) => {
+                usercapture.val();
+                allcaptures[capture.key] = usercapture.val();
+                this.setState({single_captures: allcaptures});
+            })
+            // store the capture data
+            /*let thecapture = capture.val();
+            // add capture location property to the allcaptures array at given position
+            allcaptures[capture.key] = {location:null}
+            // Retrives all the location of a given capture
+            capture_sessions.orderByKey().equalTo(thecapture.session_id).once('child_added', (capturesession) => {
+                // store the capturesession data
+                let captureloc = capturesession.val()
+                // add the capture location to allcaptures array
+                allcaptures[capture.key].location = captureloc.location
+                // Affect the value to the state
+                this.setState({capture_sessions: allcaptures})
+            })*/
+        })
     }
 
-    renderBirds() {
-        const {birds} = this.state;
-        if (birds !== null) {
-            const vals = Object.values(birds);
+    renderUserCapture() {
+        const {single_captures} = this.state;
+        if (single_captures !== null) {
+            const vals = Object.values(single_captures);
             return (
                 <React.Fragment>
-                    <div className="birds__container">
-                        {vals.map((birds, key) =>
-                            <div key={key} className="birds__bloc">
-                                <Link to={`/encyclopedie/${key}`}>
-                                    <div className="birds__bloc-info">
-                                        <div className="birds__infos">
-                                            <div className="birds__flex">
-                                                <div className="birds__champ">
-                                                    <span className="birds__title">Nom commun</span>
-                                                    <span className="birds__text">{birds.common_name}</span>
-                                                </div>
-                                                <div className="birds__champ">
-                                                    <span className="birds__title">Famille</span>
-                                                    <span className="birds__text">{birds.family}</span>
-                                                </div>
-                                                <div className="birds__champ">
-                                                    <span className="birds__title">Habitat</span>
-                                                    <span className="birds__text">{birds.habitat}</span>
-                                                </div>
-                                            </div>
-                                            <img src={birds.picture} className="birds__img" alt=""/>
-                                        </div>
-                                        <audio src={birds.song} controls className="birds__audio"></audio>
-                                        <div className="birds__latin">
-                                            <span className="birds__title">Nom latin</span>
-                                            <p className="birds__text">
-                                                {birds.latin_name}
-                                            </p>
-                                        </div>
-                                        <div className="birds__description">
-                                            <span className="birds__title">Description</span>
-                                            <p className="birds__text">
-                                                {birds.description}
-                                            </p>
-                                        </div>
-                                        <div className="birds__size">
-                                            <div>
-                                                <span className="birds__title">Taille min</span>
-                                                <span className="birds__text">{birds.min_size}</span>
-                                            </div>
-                                            <div>
-                                                <span className="birds__title">Taille max</span>
-                                                <span className="birds__text">{birds.max_size}</span>
-                                            </div>
-                                        </div>
+                    <div className="capture__container">
+                        {vals.map((single_capture, key) =>
+                            <div key={key} className="capture__bloc">
+                                <div className="capture__name">
+                                    <div className="capture__common-name">
+                                        <span className="capture__title">Nom commun</span>
+                                        <span>{single_capture.common_name}</span>
                                     </div>
-
-                                </Link>
+                                    <div className="capture__bague">
+                                        <span className="capture__title">Numéro de bague</span>
+                                        <span>{single_capture.bague}</span>
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -87,11 +75,11 @@ class MyCaptures extends Component {
             <React.Fragment>
                 <HeaderHome/>
                 <div className="wrap">
-                    <h3 aria-level="3" className="title">Liste des oiseaux</h3>
+                    <h3 aria-level="3" className="title">Mes captures</h3>
                     <button onClick={this.logout} className="button__logout"><span className="hidden">Logout</span>
                     </button>
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
-                    {this.renderBirds()}
+                    {this.renderUserCapture()}
                 </div>
                 <NavBar/>
             </React.Fragment>
