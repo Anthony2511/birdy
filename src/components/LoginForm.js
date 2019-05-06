@@ -49,7 +49,7 @@ class LoginForm extends Component {
                 <Header/>
                 <div className="wrap">
                     <h3 aria-level="3" className="title">Connexion</h3>
-                    <form action="" className="form">
+                    <form action="" onSubmit={this.login} className="form">
                         <div className="form__bloc">
                             <i className="form__input-username"></i>
                             <Input
@@ -74,7 +74,6 @@ class LoginForm extends Component {
                                 placeholder="Entrez votre mot de passe"/>
                         </div>
                         <button type="submit"
-                                onClick={this.login}
                                 className="form__input">
                             Se connecter
                         </button>

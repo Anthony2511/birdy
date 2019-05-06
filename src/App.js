@@ -3,7 +3,7 @@ import config from './config';
 import './static/css/styles.css';
 import firebase from 'firebase';
 import LoginForm from './components/LoginForm';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect, BrowserRouter} from 'react-router-dom';
 import Home from "./components/Home";
 import RegisterForm from "./components/RegisterForm";
 import AddCapture from './components/AddCapture';
@@ -43,25 +43,28 @@ class App extends Component {
     render() {
         if (this.state.user === null) {
             return (
-                <Switch>
-                    <Route path="/" exact component={LoginForm}/>
-                    <Route path="/register" component={RegisterForm}/>
-                    <Redirect to="/"/>
-                </Switch>
+                <BrowserRouter>
+                    <Switch>
+                        <Route path="/" exact component={LoginForm}/>
+                        <Route path="/register" component={RegisterForm}/>
+                        <Redirect to="/"/>
+                    </Switch>
+                </BrowserRouter>
             )
         }
         return (
             <div>
-                <Switch>
-                    <Route path="/register" component={RegisterForm}/>
-                    <Route path="/" exact component={Home}/>
-                    <Route path="/addCapture" component={AddCapture}/>
-                    <Route path="/encyclopedie" component={Encyclopedie}/>
-                    <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
-                    <Route path="/map" component={MapCapture}/>
-                    <Route path="/users" component={AllUsers}/>
-                    <Redirect to="/"/>
-                </Switch>
+                <BrowserRouter>
+                    <Switch location={this.props.location}>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/addCapture" component={AddCapture}/>
+                        <Route path="/encyclopedie" component={Encyclopedie}/>
+                        <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
+                        <Route path="/map" component={MapCapture}/>
+                        <Route path="/users" component={AllUsers}/>
+                        <Redirect to="/"/>
+                    </Switch>
+                </BrowserRouter>
             </div>
         )
     }

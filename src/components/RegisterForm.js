@@ -25,8 +25,7 @@ class RegisterForm extends Component {
     register = e => {
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-        }).then((u) => {
-            this.writeUserData();
+            this.writeUserData(u);
         }).catch((error) => {
             console.log(error);
         })
@@ -39,7 +38,7 @@ class RegisterForm extends Component {
             last_name: this.state.last_name,
             email: this.state.email,
             userId: user.uid
-        });
+        })
     }
 
     render() {
@@ -48,7 +47,7 @@ class RegisterForm extends Component {
                 <Header/>
                 <div className="wrap">
                     <h3 aria-level="3" className="title">Inscription</h3>
-                    <form action="" className="form">
+                    <form action="" onSubmit={this.register} className="form">
                         <div className="form__bloc">
                             <i className="form__input-username"></i>
                             <Input
@@ -94,7 +93,6 @@ class RegisterForm extends Component {
                                 placeholder="Entrez votre mot de passe"/>
                         </div>
                         <button type="submit"
-                                onClick={this.register}
                                 className="form__input">
                             S'inscrire
                         </button>
