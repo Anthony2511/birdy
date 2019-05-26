@@ -27,19 +27,6 @@ class MyCaptures extends Component {
                 allcaptures[capture.key] = usercapture.val();
                 this.setState({single_captures: allcaptures});
             })
-            // store the capture data
-            /*let thecapture = capture.val();
-            // add capture location property to the allcaptures array at given position
-            allcaptures[capture.key] = {location:null}
-            // Retrives all the location of a given capture
-            capture_sessions.orderByKey().equalTo(thecapture.session_id).once('child_added', (capturesession) => {
-                // store the capturesession data
-                let captureloc = capturesession.val()
-                // add the capture location to allcaptures array
-                allcaptures[capture.key].location = captureloc.location
-                // Affect the value to the state
-                this.setState({capture_sessions: allcaptures})
-            })*/
         })
     }
 
@@ -60,6 +47,9 @@ class MyCaptures extends Component {
                                     <div className="capture__bague">
                                         <span className="capture__title">Numéro de bague</span>
                                         <span>{single_capture.bague}</span>
+                                    </div>
+                                    <div className="users__container-capture">
+                                        <Link to="/editCaptures" className="button__capture">Modifier</Link>
                                     </div>
                                 </div>
                             </div>

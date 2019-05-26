@@ -12,6 +12,7 @@ import MapCapture from './components/Map';
 import AllUsers from './components/AllUsers';
 import EncyclopedieDetail from "./components/EncyclopedieDetail";
 import MyCaptures from "./components/MyCaptures";
+import EditCaptures from "./components/EditCaptures";
 
 class App extends Component {
     constructor() {
@@ -60,6 +61,7 @@ class App extends Component {
                         <Route path="/" exact component={Home}/>
                         <Route path="/addCapture" component={AddCapture}/>
                         <Route path="/myCaptures" component={MyCaptures}/>
+                        <Route path="/editCaptures" component={EditCaptures}/>
                         <Route path="/encyclopedie" component={Encyclopedie}/>
                         <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
                         <Route path="/map" component={MapCapture}/>

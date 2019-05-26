@@ -37,7 +37,7 @@ class Home extends Component {
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
                     <Link to="/addCapture" className="button__birdcage">Ajouter une capture</Link>
                     <div className="users__container-capture">
-                        <Link to="/myCaptures" className="button__birdcage">Voir mes captures</Link>
+                        <Link to="/myCaptures" className="button__capture">Voir mes captures</Link>
                     </div>
                 </div>
                 <NavBar/>
