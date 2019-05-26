@@ -39,17 +39,17 @@ class MyCaptures extends Component {
                     <div className="capture__container">
                         {vals.map((single_capture, key) =>
                             <div key={key} className="capture__bloc">
+                                <div className="button__edit">
+                                    <Link to="/editCaptures" className="button__link-edit"><span className="hidden">Modifier</span></Link>
+                                </div>
                                 <div className="capture__name">
                                     <div className="capture__common-name">
                                         <span className="capture__title">Nom commun</span>
-                                        <span>{single_capture.common_name}</span>
+                                        <span className="capture__title-infos">{single_capture.common_name}</span>
                                     </div>
                                     <div className="capture__bague">
                                         <span className="capture__title">Numéro de bague</span>
-                                        <span>{single_capture.bague}</span>
-                                    </div>
-                                    <div className="users__container-capture">
-                                        <Link to="/editCaptures" className="button__capture">Modifier</Link>
+                                        <span className="capture__title-infos">{single_capture.bague}</span>
                                     </div>
                                 </div>
                             </div>

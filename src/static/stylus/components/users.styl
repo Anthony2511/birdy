@@ -46,9 +46,14 @@
       font-family 'opensans'
       text-align center
       padding 10px
-      border-radius 10px
+      border-radius 5px
     &__bloc + &__bloc
       margin-top 30px
+    &__name
+      display flex
+      flex-direction column
+      justify-content space-between
+      margin-top 15px
     &__common-name
       font-size 14px
       display flex
@@ -59,5 +64,9 @@
       display flex
       flex-direction column
     &__title
-      font-weight: 600
+      font-weight: 700
       margin-bottom 5px
+      color $cDarkBlue
+    &__title-infos
+      text-align center
+      font-style italic
