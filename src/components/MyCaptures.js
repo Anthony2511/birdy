@@ -39,24 +39,30 @@ class MyCaptures extends Component {
                     <div className="capture__container">
                         {vals.map((key) =>
                             <div key={key} className="capture__bloc">
-                                <div className="button__edit">
-                                    <Link to={'/editCaptures/' + key} key={key} className="button__link-edit"><span className="hidden">Modifier</span></Link>
-                                </div>
                                 <div className="capture__name">
                                     <div className="capture__common-name">
                                         <span className="capture__title">Nom commun</span>
                                         <span className="capture__title-infos">{single_captures[key].common_name}</span>
                                     </div>
-                                    <div className="capture__bague">
-                                        <span className="capture__title">Numéro de bague</span>
-                                        <span className="capture__title-infos">{single_captures[key].bague}</span>
-                                    </div>
+                                </div>
+                                <div className="button__edit">
+                                    <Link to={'/editCaptures/' + key} key={key} className="button__link-edit"><span
+                                        >Modifier</span></Link>
                                 </div>
                             </div>
                         )}
                     </div>
                 </React.Fragment>
             )
+        } else {
+            return (
+                <React.Fragment>
+                    <div className="capture__container">
+                        <p className="capture__empty">Aucune capture pour le moment</p>
+                    </div>
+                </React.Fragment>
+            )
+
         }
     }
 

@@ -57,15 +57,47 @@
       font-size 14px
       color $cWhite
       display block
+  &__update
+    font-size s(14,16)
+    background-color $cGreen
+    color $cWhite
+    font-family 'opensans'
+    border-radius 20px
+    margin-top s(40,14)
+    position relative
+    border 1px solid $cLightGreyTwo
+    padding s(10,14) s(30,14)
+    width 100%
+    display block
+  &__annule
+    color $cDarkBlue
+    font-family 'opensans'
+    margin-top s(20,14)
+    position relative
+    width 100%
+    display inline-block
+    font-weight 700
+    left -17px
+    text-align center
+    &:after
+      icon('arrowRight')
+      position absolute
+      right 0
+      top 29%
+      right 10%
+      font-size 12px
+      color $cDarkBlue
+      display block
   &__capture
     color $cDarkBlue
     font-family 'opensans'
-    margin-top s(40,14)
+    margin-top s(30,14)
     position relative
     width 100%
     display inline-block
     font-weight 700
     text-align center
+    left -17px
     &:after
       icon('arrowRight')
       position absolute
@@ -77,15 +109,11 @@
       display block
   &__link-edit
     cursor pointer
-    &:before
-      icon('user')
-      color $cWhite
-      background-color orange
-      border-radius 5px
-      padding 5px 10px
-      cursor pointer
   &__edit
     text-align right
-
-
+    background-color #FA9926
+    color $cWhite
+    font-size 12px
+    border-radius 5px
+    padding 10px
 

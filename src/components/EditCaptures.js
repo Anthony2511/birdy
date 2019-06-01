@@ -192,8 +192,8 @@ class EditCaptures extends Component {
                                 type="text"
                                 label="Poids"/>
                         </div>
-                        <button type="submit" className="button__birdcage">Enregistrer les modifications</button>
-                        <Link to="/myCaptures">Annuler l'edition</Link>
+                        <button type="submit" className="button__update">Enregistrer les modifications</button>
+                        <Link to="/myCaptures" className="button__annule">Annuler l'édition</Link>
                     </form>
                 </React.Fragment>
             )} else {

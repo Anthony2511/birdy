@@ -168,7 +168,8 @@ class AddCapture extends Component {
                             id="common_name"
                             name="common_name"
                             type="text"
-                            label="Nom commun"/>
+                            label="Nom commun"
+                            placeholder="ex: Arthur"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -177,7 +178,8 @@ class AddCapture extends Component {
                             id="bague"
                             name="bague"
                             type="number"
-                            label="Type de bague"/>
+                            label="Type de bague"
+                            placeholder="ex: 125 276 587"/>
                     </div>
                     {/*<div className="form__bloc">
                         <Input
@@ -195,7 +197,8 @@ class AddCapture extends Component {
                             id="age"
                             name="age"
                             type="number"
-                            label="&Aacute;ge"/>
+                            label="&Aacute;ge"
+                            placeholder="ex: 7"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -204,7 +207,8 @@ class AddCapture extends Component {
                             id="alaire"
                             name="alaire"
                             type="text"
-                            label="Longueur d'alaire"/>
+                            label="Longueur d'alaire"
+                            placeholder="ex: 15cm"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -213,7 +217,8 @@ class AddCapture extends Component {
                             id="latin_name"
                             name="latin_name"
                             type="text"
-                            label="Nom latin"/>
+                            label="Nom latin"
+                            placeholder="ex: Lorem ipsum"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -222,7 +227,8 @@ class AddCapture extends Component {
                             id="sex"
                             name="sex"
                             type="text"
-                            label="Sexe"/>
+                            label="Sexe"
+                            placeholder="M ou F"/>
                     </div>
                     <div className="form__bloc">
                         <Input
@@ -231,7 +237,8 @@ class AddCapture extends Component {
                             id="weight"
                             name="weight"
                             type="text"
-                            label="Poids"/>
+                            label="Poids"
+                            placeholder="ex: 6.5kg"/>
                     </div>
                     <button type="submit"
                             className="button__form">

@@ -45,20 +45,19 @@
       background-color $cLightGrey
       font-family 'opensans'
       text-align center
-      padding 10px
+      padding 20px 10px
       border-radius 5px
+      display flex
+      flex-direction row
+      justify-content space-between
+      align-items center
     &__bloc + &__bloc
       margin-top 30px
-    &__name
-      display flex
-      flex-direction column
-      justify-content space-between
-      margin-top 15px
     &__common-name
       font-size 14px
       display flex
       flex-direction column
-      margin-bottom 10px
+      justify-content center
     &__bague
       font-size 14px
       display flex
@@ -68,5 +67,10 @@
       margin-bottom 5px
       color $cDarkBlue
     &__title-infos
-      text-align center
+      text-align left
       font-style italic
+    &__empty
+      font-family 'opensans'
+      font-size 14px
+      color $cDarkBlue
+      font-weight 600
