@@ -80,7 +80,26 @@ class AddCapture extends Component {
         const bird = firebase.database().ref('single_captures');
         bird.push({
             common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age, session_id
-        });
+        }).then(() => {
+            const newBird = {...this.state.newBird};
+            newBird.common_name = ''
+            newBird.bague = ''
+            newBird.reprise = ''
+            newBird.latin_name = ''
+            newBird.alaire = ''
+            newBird.sex = 'M'
+            newBird.weight = ''
+            newBird.fat = ''
+            newBird.age = ''
+            this.setState({newBird}, () => {
+                setTimeout(() => {
+                    this.setState({
+
+                    })
+                }, 1000)
+            })
+
+        })
     };
 
 
