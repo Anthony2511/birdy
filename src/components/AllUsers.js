@@ -45,12 +45,6 @@ class AllUsers extends Component {
                                         {users.last_name}
                                     </span>
                                 </div>
-                                <span className="users__item users__item--email">
-                                    {users.email}
-                                </span>
-                                <span className="users__item users__item--id">
-                                    {users.userId}
-                                </span>
                             </div>
                         )}
                     </div>

@@ -104,7 +104,7 @@ class AddCapture extends Component {
                             text: 'La capture a bien été ajoutée'
                         }
                     })
-                }, 3000)
+                }, 1000)
             })
 
         })

@@ -6,10 +6,12 @@
       display flex
       flex-direction row-reverse
       justify-content space-between
-      color $cDarkBlue
+      color $cWhite
+      background-color $cGreen
+      padding 20px 10px
+      border-radius 5px 5px 0 0
     &__bloc-info
-      padding 15px
-      border-radius 10px
+      border-radius 5px
       background-color $cLightGrey
       margin-bottom 30px
       font-family 'opensans'
@@ -18,7 +20,7 @@
     &__img
       width 100px
       height 50%
-      margin-right 5px
+      border-radius 5px
     &__title
       font-weight: 600
       font-size 16px
@@ -27,8 +29,11 @@
       display flex
       flex-direction column
       margin-bottom 15px
+    &__container-infos
+      padding 10px 10px 20px 10px
     &__text
       font-size 14px
+      font-style italic
     &__audio
       width 100%
     &__size
@@ -39,17 +44,23 @@
       .birds
         &__title
           margin-right 5px
+          color $cDarkBlue
+        &__text
+          color $cDarkBlue
     &__latin
-      margin-bottom 10px
+      margin-bottom 15px
+      color $cDarkBlue
       .birds
         &__title
           margin-bottom 5px
           display block
     &__description
       margin-bottom 10px
+      color $cDarkBlue
       .birds
         &__title
           margin-bottom 5px
           display flex
         &__text
           line-height 1.6
+          color $cDarkBlue

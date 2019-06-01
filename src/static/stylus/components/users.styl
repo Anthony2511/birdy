@@ -3,14 +3,9 @@
     &__container
       margin-bottom 100px
     &__bloc
-      display flex
-      flex-direction column
-      justify-content center
-      align-items center
-      flex-wrap wrap
       background-color $cLightGrey
-      border-radius 10px
-      padding 20px
+      border-radius 5px
+      padding 10px 15px
     &__bloc + &__bloc
       margin-top 20px
     &__item
@@ -18,14 +13,19 @@
       font-family 'opensans'
       margin 0 2.5px
       &--bold
-        font-weight:600
+        font-weight:400
+        font-style italic
+        font-size 14px
       &--email
         font-size 14px
       &--id
         margin-top 10px
         font-size 12px
     &__name
-      margin-bottom 10px
+      &:before
+        icon('user')
+        color $cGreen
+        margin-right 10px
     &__bloc-capture
       display flex
       flex-direction row
@@ -58,6 +58,7 @@
       display flex
       flex-direction column
       justify-content center
+      align-items baseline
     &__bague
       font-size 14px
       display flex

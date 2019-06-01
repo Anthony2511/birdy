@@ -6,8 +6,17 @@ import {Link} from 'react-router-dom';
 
 class Encyclopedie extends Component {
 
+    constructor(props) {
+        super(props);
+        this.logout = this.logout.bind(this);
+    }
+
     state = {
         birds: {}
+    }
+
+    logout() {
+        firebase.auth().signOut();
     }
 
     componentWillMount() {
@@ -49,26 +58,28 @@ class Encyclopedie extends Component {
                                             <img src={birds.picture} className="birds__img" alt=""/>
                                         </div>
                                         <audio src={birds.song} controls className="birds__audio"></audio>
-                                        <div className="birds__latin">
-                                            <span className="birds__title">Nom latin</span>
-                                            <p className="birds__text">
-                                                {birds.latin_name}
-                                            </p>
-                                        </div>
-                                        <div className="birds__description">
-                                            <span className="birds__title">Description</span>
-                                            <p className="birds__text">
-                                                {birds.description}
-                                            </p>
-                                        </div>
-                                        <div className="birds__size">
-                                            <div>
-                                                <span className="birds__title">Taille min</span>
-                                                <span className="birds__text">{birds.min_size}</span>
+                                        <div className="birds__container-infos">
+                                            <div className="birds__latin">
+                                                <span className="birds__title">Nom latin</span>
+                                                <p className="birds__text">
+                                                    {birds.latin_name}
+                                                </p>
                                             </div>
-                                            <div>
-                                                <span className="birds__title">Taille max</span>
-                                                <span className="birds__text">{birds.max_size}</span>
+                                            <div className="birds__description">
+                                                <span className="birds__title">Description</span>
+                                                <p className="birds__text">
+                                                    {birds.description}
+                                                </p>
+                                            </div>
+                                            <div className="birds__size">
+                                                <div>
+                                                    <span className="birds__title">Taille min</span>
+                                                    <span className="birds__text">{birds.min_size}</span>
+                                                </div>
+                                                <div>
+                                                    <span className="birds__title">Taille max</span>
+                                                    <span className="birds__text">{birds.max_size}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
