@@ -61,7 +61,7 @@ class App extends Component {
                         <Route path="/" exact component={Home}/>
                         <Route path="/addCapture" component={AddCapture}/>
                         <Route path="/myCaptures" component={MyCaptures}/>
-                        <Route path="/editCaptures" component={EditCaptures}/>
+                        <Route path="/editCaptures/:captureId" component={EditCaptures}/>
                         <Route path="/encyclopedie" component={Encyclopedie}/>
                         <Route path="/encyclopdie/:id" component={EncyclopedieDetail}/>
                         <Route path="/map" component={MapCapture}/>

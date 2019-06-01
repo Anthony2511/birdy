@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 class MyCaptures extends Component {
 
     state = {
-        single_captures: {},
+        single_captures: null,
         uid: firebase.auth().currentUser.uid
     }
 
@@ -33,23 +33,23 @@ class MyCaptures extends Component {
     renderUserCapture() {
         const {single_captures} = this.state;
         if (single_captures !== null) {
-            const vals = Object.values(single_captures);
+            const vals = Object.keys(single_captures);
             return (
                 <React.Fragment>
                     <div className="capture__container">
-                        {vals.map((single_capture, key) =>
+                        {vals.map((key) =>
                             <div key={key} className="capture__bloc">
                                 <div className="button__edit">
-                                    <Link to="/editCaptures" className="button__link-edit"><span className="hidden">Modifier</span></Link>
+                                    <Link to={'/editCaptures/' + key} key={key} className="button__link-edit"><span className="hidden">Modifier</span></Link>
                                 </div>
                                 <div className="capture__name">
                                     <div className="capture__common-name">
                                         <span className="capture__title">Nom commun</span>
-                                        <span className="capture__title-infos">{single_capture.common_name}</span>
+                                        <span className="capture__title-infos">{single_captures[key].common_name}</span>
                                     </div>
                                     <div className="capture__bague">
                                         <span className="capture__title">Numéro de bague</span>
-                                        <span className="capture__title-infos">{single_capture.bague}</span>
+                                        <span className="capture__title-infos">{single_captures[key].bague}</span>
                                     </div>
                                 </div>
                             </div>

@@ -38,15 +38,16 @@ class EditCaptures extends Component {
         // store the id of the capture passed on the params
         const captureId = this.props.match.params.captureId
         // Endpoint on the DB
-        const captureref = firebase.database().ref('single_captures');
 
-        captureref.orderByKey().equalTo(captureId).on('value', result => {
+        /********CORRIGER SESSION ID EDIT*******/
+        const captureref = firebase.database().ref('single_captures')
+        captureref.orderByChild("session_id").equalTo(captureId).on('value', result => {
             // variable to store the capture data
             let singlecapture = {};
             // Loop trough the data array
             result.forEach((thecapture) => {
                 // select the data that we want from the endpoint
-                const {key,session_id, common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age, uid} = thecapture.val();
+                const {session_id, common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age, uid} = thecapture.val();
                 // fill the object with the data
                 singlecapture = {
                     key: thecapture.key,
@@ -116,7 +117,7 @@ class EditCaptures extends Component {
                 })
                 // programmatically redirects to mescaptures
                 this.props.history.push('/myCaptures');
-            }, 5000)
+            }, 1000)
         })
     };
 
@@ -127,7 +128,7 @@ class EditCaptures extends Component {
         if (capture !== null) {
             return (
                 <React.Fragment>
-                    <form onSubmit={this.handleUpdate} action="">
+                    <form onSubmit={this.handleUpdate} action="" className="edit-form">
                         <div className="form__bloc">
                             <Input
                                 value={capture.common_name}
@@ -191,7 +192,7 @@ class EditCaptures extends Component {
                                 type="text"
                                 label="Poids"/>
                         </div>
-                        <button type="submit">Enregistrer les modifications</button>
+                        <button type="submit" className="button__birdcage">Enregistrer les modifications</button>
                         <Link to="/myCaptures">Annuler l'edition</Link>
                     </form>
                 </React.Fragment>
@@ -210,7 +211,6 @@ class EditCaptures extends Component {
                     <button onClick={this.logout} className="button__logout"><span className="hidden">Logout</span>
                     </button>
                     <Link to="/" className="button__home"><span className="hidden">Home</span></Link>
-                    <p>Voici la page d'édition d'une capture</p>
                     {this.renderEdit()}
                 </div>
                 <NavBar/>
