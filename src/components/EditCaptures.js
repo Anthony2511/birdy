@@ -4,6 +4,7 @@ import HeaderHome from "./HeaderHome";
 import NavBar from "./Navbar";
 import {Link} from 'react-router-dom';
 import Input from './Input';
+import Toolip from './Toolip';
 
 class EditCaptures extends Component {
 
@@ -28,6 +29,10 @@ class EditCaptures extends Component {
         },
         captureId: null,
         errors:{},
+        themessage: {
+            show: false,
+            text: ''
+        }
     }
 
     logout() {
@@ -109,20 +114,25 @@ class EditCaptures extends Component {
             key,session_id, common_name, bague, reprise, latin_name, alaire, sex, weight, fat, age
         }).then(() => {
             this.setState({
-
+                themessage:{
+                    show: true,
+                    text: 'La capture a bien été modifié'
+                }
             });
             setTimeout(() => {
                 this.setState({
-
+                    themessage:{
+                        show: false
+                    }
                 })
                 // programmatically redirects to mescaptures
                 this.props.history.push('/myCaptures');
-            }, 1000)
+            }, 2000)
         })
     };
 
     renderEdit() {
-        const {capture, errors} = this.state;
+        const {capture, errors, themessage} = this.state;
         const {} = this.state.capture;
 
         if (capture !== null) {
@@ -194,6 +204,7 @@ class EditCaptures extends Component {
                         </div>
                         <button type="submit" className="button__update">Enregistrer les modifications</button>
                         <Link to="/myCaptures" className="button__annule">Annuler l'édition</Link>
+                        {themessage.show && <Toolip message={themessage.text} />}
                     </form>
                 </React.Fragment>
             )} else {

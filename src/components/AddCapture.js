@@ -4,6 +4,7 @@ import HeaderHome from "./HeaderHome";
 import NavBar from "./Navbar";
 import Input from './Input';
 import {Link} from 'react-router-dom';
+import Toolip from './Toolip';
 
 class AddCapture extends Component {
     constructor(props) {
@@ -33,7 +34,11 @@ class AddCapture extends Component {
             fat: '',
             age: '',
         },
-        capture_sessions: {}
+        capture_sessions: {},
+        themessage: {
+            show: false,
+            text: ''
+        }
     };
 
     logout() {
@@ -94,9 +99,12 @@ class AddCapture extends Component {
             this.setState({newBird}, () => {
                 setTimeout(() => {
                     this.setState({
-
+                        themessage:{
+                            show: true,
+                            text: 'La capture a bien été ajoutée'
+                        }
                     })
-                }, 1000)
+                }, 3000)
             })
 
         })
@@ -136,7 +144,7 @@ class AddCapture extends Component {
 
     newSessionCapture() {
         const {started, method} = this.state.newSession;
-        const {newBird} = this.state;
+        const {newBird, themessage} = this.state;
         if (started !== true) {
             return (
                 <div>
@@ -244,6 +252,7 @@ class AddCapture extends Component {
                             className="button__form">
                         Ajouter la capture
                     </button>
+                    {themessage.show && <Toolip message={themessage.text} />}
                 </form>
             )
         }
